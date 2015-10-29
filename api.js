@@ -1,6 +1,6 @@
 'use strict';
 
-cosnt exprss = require('express'),
+const express = require('express'),
       bodyParser = require('body-parser'),
       api = express();
 
