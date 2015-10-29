@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const uuid = require('node-uuid');
 
 const UserSchema = mongoose.Schema({
-    name : {
+    username : {
         type     : String,
         required : true,
     },
@@ -14,9 +14,6 @@ const UserSchema = mongoose.Schema({
     email : {
         type     : String,
         required : true,
-    }
-    token : {
-        type : String,
     },
     age : {
         type     : Number,
@@ -24,9 +21,20 @@ const UserSchema = mongoose.Schema({
         min      : 0,
         max      : 150,
     },
+});
 
+const TokenSchema = mongoose.Schema({
+    username : {
+        type     : String,
+        required : true,
+    },
+    password : {
+        type     : String,
+        required : true,
+    },
 });
 
 module.exports = {
     User    : mongoose.model('User', UserSchema),
+    Token   : mongoose.model('Token', TokenSchema),
 };
