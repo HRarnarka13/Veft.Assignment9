@@ -19,7 +19,7 @@ app.use((req, res, next) => {
         'method': req.method
     };
     const data = [{
-        topic: 'requests',
+        topic: 'users',
         messages: JSON.stringify(request_details)
     }];
     producer.send(data, (err, data) => {
