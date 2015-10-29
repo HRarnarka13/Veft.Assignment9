@@ -39,7 +39,7 @@ mongoose.connection.once('open', () => {
     // Connect kafka producer
     producer.on('ready', () => {
         console.log('Kafka producer is ready');
-        // Connect server 
+        // Connect server
         app.listen(port, () => {
             console.log('Server starting on port', port);
         });
