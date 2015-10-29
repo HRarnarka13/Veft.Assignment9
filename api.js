@@ -33,7 +33,7 @@ api.post('/user', (req, res) => {
 // This method checks if the username and password is correct and sends back a token for
 // the user who has the same username and password.
 api.post('/token', (req, res) => {
-    const token = new.models.Token(req.body);
+    const token = new models.Token(req.body);
     // validate the request data
     token.validate((err) => {
         if (err) {
@@ -53,7 +53,7 @@ api.post('/token', (req, res) => {
             }
             // Return the user token
             res.status(200).send({'token': user.token });
-        };
+        });
     });
 });
 

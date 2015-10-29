@@ -13,7 +13,8 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "kafka-node": "^0.2.29",
-    "mongoose": "^4.2.3"
+    "mongoose": "^4.2.3",
+    "node-uuid": "^1.4.3"
   },
   "devDependencies": {
     "nodemon": "^1.8.0"
