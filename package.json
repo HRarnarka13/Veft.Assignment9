@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.13.3",
     "kafka-node": "^0.2.29"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.0"
   }
 }
