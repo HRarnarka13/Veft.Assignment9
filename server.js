@@ -32,12 +32,14 @@ app.use((req, res, next) => {
     });
 });
 
+// Connect Mongoose
 mongoose.connect('localhost/app');
-
-producer.on('ready', () => {
-    console.log('Kafka producer is ready');
-    mongoose.connection.once('open', () => {
-        console.log('Mongoose is connected');
+mongoose.connection.once('open', () => {
+    console.log('Mongoose is connected');
+    // Connect kafka producer
+    producer.on('ready', () => {
+        console.log('Kafka producer is ready');
+        // Connect server 
         app.listen(port, () => {
             console.log('Server starting on port', port);
         });
