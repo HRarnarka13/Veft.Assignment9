@@ -1,0 +1,15 @@
+{
+  "name": "assignment9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "arnarka13@ru.is, eysteinn13@ru.is",
+  "license": "ISC",
+  "dependencies": {
+    "kafka-node": "^0.2.29"
+  }
+}
