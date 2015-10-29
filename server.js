@@ -10,7 +10,7 @@ const HighLevelProducer = kafka.HighLevelProducer;
 const client            = new kafka.Client('localhost:2181');
 const producer          = new HighLevelProducer(client);
 
-app.use('/api', api);
+app.use('/', api);
 
 app.use((req, res, next) => {
     const request_details = {

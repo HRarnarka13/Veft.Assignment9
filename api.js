@@ -12,7 +12,7 @@ api.get('/', (req, res) => {
 });
 
 // This method creates a user and stores it into the database based on the request body
-api.post('/user', (req, res) => {
+api.post('/users', (req, res) => {
     const user = new models.User(req.body); // Create user model from request body
     user.validate((err) => { // Validate data
         if (err) {
