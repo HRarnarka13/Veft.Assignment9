@@ -23,6 +23,9 @@ const UserSchema = mongoose.Schema({
         min      : 0,
         max      : 150,
     },
+    token : {
+        type : String,
+    }
 });
 
 const TokenSchema = mongoose.Schema({

@@ -13,27 +13,6 @@ const producer          = new HighLevelProducer(client);
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-    const request_details = {
-        'timestamp' : new Date(),
-        'path'      : req.path,
-        'headers'   : req.headers,
-        'method'    : req.method
-    };
-    const data = [{
-        topic   : 'users',
-        messages: JSON.stringify(request_details)
-    }];
-    producer.send(data, (err, data) => {
-        if (err) {
-            console.log('Error:', err);
-            return;
-        }
-        console.log(data);
-        next();
-    });
-});
-
 // This method creates a user and stores it into the database based on the request body
 app.post('/users', (req, res) => {
     const user = new models.User(req.body); // Create user model from request body
@@ -47,8 +26,20 @@ app.post('/users', (req, res) => {
                 res.status(412).send(err.message);
                 return;
             }
-            // Create user was successful, send response 201 CREATED
-            res.status(201).send(docs);
+            const data = [{
+                topic   : 'users',
+                messages: JSON.stringify(user)
+            }];
+            // Send message to consumer
+            producer.send(data, (err, data) => {
+                if (err) {
+                    console.log('Error:', err);
+                } else {
+                    console.log(data);
+                }
+                // Create user was successful, send response 201 CREATED
+                res.status(201).send(docs);
+            });
         });
     });
 });
@@ -74,7 +65,7 @@ app.post('/token', (req, res) => {
                 res.status(410).send(err.message);
                 return;
             }
-            // Return the user token
+            // Return the user token to client
             res.status(200).send({'token': user.token });
         });
     });
